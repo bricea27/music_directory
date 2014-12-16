@@ -1,0 +1,29 @@
+<html>
+<body>
+
+  <input type="text">
+  <button>Click me</button>
+  <ul></ul>
+
+
+  <script>
+  var button = document.querySelector("button");
+  button.addEventListener("click", function() {
+    var ul = document.querySelector("ul");
+    var textbox = document.querySelector("input");
+    var text = textbox.value;
+    var li = document.createElement("li");
+    li.innerHTML = text;
+    li.setAttribute("draggable", "true");
+    li.addEventListener("dragstart", function() {
+      //note how li is in scope within this listener
+      //so i can refer to myself by using that variable
+      ul.removeChild(li);
+      //alternatively: ul.removeChild(this)
+    })
+    ul.appendChild(li);
+  })
+  </script>
+
+</body>
+</html>
